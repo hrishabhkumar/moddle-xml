@@ -1,17 +1,18 @@
 'use strict';
 
-var Writer = require('../../lib/writer'),
-    Helper = require('../helper');
+import Writer from '../../lib/writer';
 
-var _ = require('lodash');
+import { createModelBuilder } from '../helper';
+
+import { assign } from 'lodash-es';
 
 
 describe('Writer', function() {
 
-  var createModel = Helper.createModelBuilder('test/fixtures/model/');
+  var createModel = createModelBuilder('test/fixtures/model/');
 
   function createWriter(model, options) {
-    return new Writer(_.extend({ preamble: false }, options || {}));
+    return new Writer(assign({ preamble: false }, options || {}));
   }
 
 
@@ -39,7 +40,11 @@ describe('Writer', function() {
 
     describe('datatypes', function() {
 
-      var datatypesModel = createModel(['datatype', 'datatype-external', 'datatype-aliased']);
+      var datatypesModel = createModel([
+        'datatype',
+        'datatype-external',
+        'datatype-aliased'
+      ]);
 
       it('via xsi:type', function() {
 

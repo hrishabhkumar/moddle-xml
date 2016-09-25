@@ -1,4 +1,7 @@
-module.exports = {
-  Reader: require('./lib/reader'),
-  Writer: require('./lib/writer')
+import Reader from './lib/reader';
+import Writer from './lib/writer';
+
+export default const {
+  Reader: Reader,
+  Writer: Writer
 };
